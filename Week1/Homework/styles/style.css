@@ -16,6 +16,10 @@ header {
   border-radius: 50%;
 }
 
+.profile:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
 .title {
   display: flex;
   flex-direction: column;
@@ -32,4 +36,9 @@ header > a > img {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
+}
+
+header > a > img:hover {
+  transform: translateY(-0.2rem);
+  transition-duration: 0.2s;
 }
