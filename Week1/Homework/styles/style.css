@@ -2,10 +2,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(255, 255, 213);
+  background-color: var(--light-yellow);
   padding: 0.5rem 2rem;
 
-  position: fixed;
+  position: sticky;
   width: 100%;
   box-sizing: border-box;
 }
@@ -41,4 +41,46 @@ header > a > img {
 header > a > img:hover {
   transform: translateY(-0.2rem);
   transition-duration: 0.2s;
+}
+
+.photo-dump {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 18rem;
+}
+
+.photo-dump > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.photo-dump > img:nth-child(1) {
+  grid-column: span 1;
+}
+.photo-dump > img:nth-child(2) {
+  grid-column: span 1;
+}
+.photo-dump > img:nth-child(3) {
+  grid-column: span 2;
+}
+.photo-dump > img:nth-child(4) {
+  grid-column: span 3;
+  grid-row: span 2;
+}
+.photo-dump > img:nth-child(5) {
+  grid-column: span 1;
+}
+.photo-dump > img:nth-child(6) {
+  grid-column: span 1;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8rem;
+  background-color: var(--light-yellow);
 }
