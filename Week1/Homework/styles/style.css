@@ -14,10 +14,9 @@ header {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-}
-
-.profile:hover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+  &:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
 }
 
 .title {
@@ -36,11 +35,10 @@ header > a > img {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-}
-
-header > a > img:hover {
-  transform: translateY(-0.2rem);
   transition-duration: 0.2s;
+  &:hover {
+    transform: translateY(-0.2rem);
+  }
 }
 
 .photo-dump {
@@ -54,7 +52,7 @@ header > a > img:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 1rem;
+  border-radius: 10px;
 }
 
 .photo-dump > img:nth-child(1) {
@@ -82,8 +80,8 @@ header > a > img:hover {
   flex-direction: column;
   padding: 2rem 2rem;
   gap: 1rem;
-  background-color: pink;
-  border-radius: 1rem;
+  background-color: white;
+  border-radius: 10px;
 }
 .to-web-box > p::before {
   content: "🐈‍⬛ ";
@@ -98,4 +96,76 @@ footer {
   align-items: center;
   height: 8rem;
   background-color: var(--light-yellow);
+}
+
+.card-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  transition-duration: 0.2s;
+
+  &:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+}
+
+.card > img {
+  width: 100%;
+  object-fit: cover;
+}
+.card-body {
+  padding: 1rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.card-body > p::before {
+  content: "💫 ";
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 0.4rem 0.8rem;
+}
+
+.button-good {
+  background-color: var(--light-yellow);
+  &:hover {
+    background-color: rgb(255, 255, 87);
+  }
+}
+
+.button-bad {
+  background-color: rgb(255, 195, 195);
+  &:hover {
+    background-color: rgb(255, 143, 143);
+  }
+}
+
+@media (max-width: 1200px) {
+  .card-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .card-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
