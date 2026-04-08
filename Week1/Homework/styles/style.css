@@ -77,6 +77,21 @@ header > a > img:hover {
   grid-column: span 1;
 }
 
+.to-web-box {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2rem;
+  gap: 1rem;
+  background-color: pink;
+  border-radius: 1rem;
+}
+.to-web-box > p::before {
+  content: "🐈‍⬛ ";
+}
+.to-web-box > p::after {
+  content: " 💭 ";
+}
+
 footer {
   display: flex;
   justify-content: center;
