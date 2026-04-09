@@ -1,15 +1,20 @@
+html {
+  background-color: rgb(243, 244, 246);
+  scroll-behavior: smooth;
+}
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--light-yellow);
-  padding: 0.5rem 2rem;
-
+  padding: 1rem 2rem;
+  top: 0;
   position: sticky;
   width: 100%;
   box-sizing: border-box;
+  z-index: 100;
 }
-
 .profile {
   width: 2rem;
   height: 2rem;
@@ -18,19 +23,16 @@ header {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 }
-
 .title {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
 }
-
 h1 {
   font-size: 1.5rem;
   font-weight: 600;
 }
-
 header > a > img {
   width: 2rem;
   height: 2rem;
@@ -41,6 +43,54 @@ header > a > img {
   }
 }
 
+main {
+  display: flex;
+  gap: 3rem;
+  margin: 0 auto;
+  padding: 2rem;
+  align-items: flex-start;
+}
+
+/* 포토 덤프 섹션 */
+.sidebar {
+  position: sticky;
+  flex-shrink: 0;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+  padding: 1.2rem;
+  top: 7rem;
+}
+
+.sidebar a {
+  display: block;
+  padding: 1.2rem;
+  text-decoration: none;
+  border-radius: 30px;
+  color: black;
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: cadetblue;
+  }
+}
+
+.sidebar li:first-child a {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.sidebar li:last-child a {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  min-width: 0;
+}
+
 /* 포토 덤프 섹션 */
 .photo-dump {
   display: grid;
@@ -48,31 +98,36 @@ header > a > img {
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 18rem;
 }
-
-.photo-dump > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.photo-box {
   border-radius: 10px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  &:hover img {
+    transform: scale(1.1);
+  }
 }
-
-.photo-dump > img:nth-child(1) {
+.photo-box:nth-child(1) {
   grid-column: span 1;
 }
-.photo-dump > img:nth-child(2) {
+.photo-box:nth-child(2) {
   grid-column: span 1;
 }
-.photo-dump > img:nth-child(3) {
+.photo-box:nth-child(3) {
   grid-column: span 2;
 }
-.photo-dump > img:nth-child(4) {
+.photo-box:nth-child(4) {
   grid-column: span 3;
   grid-row: span 2;
 }
-.photo-dump > img:nth-child(5) {
+.photo-box:nth-child(5) {
   grid-column: span 1;
 }
-.photo-dump > img:nth-child(6) {
+.photo-box:nth-child(6) {
   grid-column: span 1;
 }
 
