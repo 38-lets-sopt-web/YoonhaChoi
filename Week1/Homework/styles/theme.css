@@ -1,3 +1,4 @@
 :root {
   --light-yellow: rgb(255, 255, 163);
+  --shadow-basic: 0 3px 6px rgba(0, 0, 0, 0.23);
 }
