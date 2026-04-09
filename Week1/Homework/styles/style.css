@@ -181,7 +181,7 @@ main {
 .card-list {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
 }
 .card {
   display: flex;
@@ -229,21 +229,6 @@ button {
   background-color: rgb(255, 195, 195);
   &:hover {
     background-color: rgb(255, 143, 143);
-  }
-}
-@media (max-width: 1200px) {
-  .card-list {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-@media (max-width: 900px) {
-  .card-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .card-list {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
