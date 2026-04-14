@@ -1,0 +1,25 @@
+html {
+  background-color: lavenderblush;
+}
+
+.header {
+  display: flex;
+  position: sticky;
+  height: 4rem;
+  background-color: lightpink;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header__logo {
+  width: 2rem;
+  height: 2rem;
+  background-color: lavenderblush;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.header__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
