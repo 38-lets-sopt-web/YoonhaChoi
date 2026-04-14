@@ -1,7 +1,7 @@
 const names = ["nami", "ahri", "jayce", "garen", "ivern", "vex", "jinx"];
 
-function solution(names) {
+function fivePeople(names) {
   return names.filter((_, i) => i % 5 === 0);
 }
 
-console.log(solution(names));
+console.log(fivePeople(names));
