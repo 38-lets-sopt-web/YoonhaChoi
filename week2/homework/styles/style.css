@@ -3,12 +3,14 @@ html {
 }
 
 .header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
   position: sticky;
+  top: 0;
   height: 4rem;
   background-color: lightpink;
-  align-items: center;
-  justify-content: space-around;
 }
 
 .header__logo {
