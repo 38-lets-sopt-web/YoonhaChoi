@@ -10,9 +10,71 @@
   </head>
   <body>
     <header class="header">
-      <a class="header__logo" onclick="location.reload()">💰</a>
+      <a href="/week2/homework" class="header__logo">💰</a>
       <h1 class="header__title">윤하의 가계부</h1>
       <p class="header__subtitle">SOPT 38th WEB</p>
     </header>
+
+    <main>
+      <section class="search-filter">
+        <h2 class="search-filter__title">검색 필터</h2>
+        <div class="search-filter__contents">
+          <div class="input-container-grid1">
+            <label for="search-title">제목</label>
+            <input
+              class="search-filter__input"
+              type="text"
+              id="search-title"
+              name="title"
+              placeholder="내역을 입력하세요."
+            />
+          </div>
+
+          <div class="input-container-grid3">
+            <label for="filter-type">유형</label>
+            <select class="search-filter__select" id="filter-type" name="type">
+              <option value="all">전체</option>
+              <option value="income">수입</option>
+              <option value="expenses">지출</option>
+            </select>
+          </div>
+
+          <div class="input-container-grid3">
+            <label for="filter-category">카테고리</label>
+            <select
+              class="search-filter__select"
+              id="filter-category"
+              name="category"
+            >
+              <option value="all">전체</option>
+              <option value="food">식비</option>
+              <option value="salary">월급</option>
+              <option value="culture">문화</option>
+              <option value="transport">교통</option>
+              <option value="life">생활</option>
+              <option value="etc">기타</option>
+            </select>
+          </div>
+
+          <div class="input-container-grid3">
+            <label for="filter-payment">결제수단</label>
+            <select
+              class="search-filter__select"
+              id="filter-payment"
+              name="payment"
+            >
+              <option value="all">전체</option>
+              <option value="credit-card">신용카드</option>
+              <option value="check-card">체크카드</option>
+              <option value="cash">현금</option>
+              <option value="etc">기타</option>
+            </select>
+          </div>
+
+          <button type="button" class="search-filter__btn">적용</button>
+          <button type="button" class="search-filter__btn">초기화</button>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
