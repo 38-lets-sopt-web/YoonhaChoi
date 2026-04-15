@@ -9,6 +9,7 @@
     <title>윤하의 가계부</title>
   </head>
   <body>
+    <!-- 헤더 -->
     <header class="header">
       <a href="/week2/homework" class="header__logo">💰</a>
       <h1 class="header__title">윤하의 가계부</h1>
@@ -16,6 +17,7 @@
     </header>
 
     <main>
+      <!-- 검색 필터 -->
       <section class="search-filter">
         <h2 class="search-filter__title">검색 필터</h2>
         <div class="search-filter__contents">
@@ -74,6 +76,32 @@
           <button type="button" class="search-filter__btn">적용</button>
           <button type="button" class="search-filter__btn">초기화</button>
         </div>
+      </section>
+
+      <!-- 표 -->
+      <section class="section-table">
+        <div class="section-table__header">
+          <div class="section-table__button-container">
+            <button type="button" class="btn btn--delete">선택 삭제</button>
+            <button type="button" class="btn btn--add">추가</button>
+          </div>
+        </div>
+
+        <table class="section-table__content">
+          <thead class="section-table__thead">
+            <tr>
+              <th class="section-table__th">
+                <input type="checkbox" class="section-table__checkbox" />
+              </th>
+              <th class="section-table__th">제목</th>
+              <th class="section-table__th">금액</th>
+              <th class="section-table__th">날짜</th>
+              <th class="section-table__th">카테고리</th>
+              <th class="section-table__th">결제수단</th>
+            </tr>
+          </thead>
+          <tbody class="section-table__tbody"></tbody>
+        </table>
       </section>
     </main>
   </body>
