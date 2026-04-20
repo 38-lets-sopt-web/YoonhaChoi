@@ -1,0 +1,55 @@
+.modal {
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  width: 20rem;
+  background-color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-inner {
+  padding: 2rem;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.8rem;
+}
+
+.modal-header__title {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.modal-header__close {
+  font-size: 2rem;
+  transition: opacity 0.2s ease;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.modal__info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal__info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed gainsboro;
+}
+
+.modal__info-label {
+  color: grey;
+}
+
+.modal__info-value {
+  color: black;
+}

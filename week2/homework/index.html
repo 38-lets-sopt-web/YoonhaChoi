@@ -104,5 +104,40 @@
         </table>
       </section>
     </main>
+
+    <dialog class="modal" id="modal-detail">
+      <div class="modal-inner">
+        <div class="modal-header">
+          <h2 class="modal-header__title">상세 내역</h2>
+          <button class="modal-header__close" type="button">&times;</button>
+        </div>
+
+        <ul class="modal__info-list">
+          <li class="modal__info-row">
+            <span class="modal__info-label">제목</span>
+            <span class="modal__info-value" id="detail-title"></span>
+          </li>
+          <li class="modal__info-row">
+            <span class="modal__info-label">금액</span>
+            <span
+              class="modal__info-value expense-text"
+              id="detail-amount"
+            ></span>
+          </li>
+          <li class="modal__info-row">
+            <span class="modal__info-label">날짜</span>
+            <span class="modal__info-value" id="detail-date"></span>
+          </li>
+          <li class="modal__info-row">
+            <span class="modal__info-label">카테고리</span>
+            <span class="modal__info-value" id="detail-category"></span>
+          </li>
+          <li class="modal__info-row">
+            <span class="modal__info-label">결제수단</span>
+            <span class="modal__info-value" id="detail-payment"></span>
+          </li>
+        </ul>
+      </div>
+    </dialog>
   </body>
 </html>

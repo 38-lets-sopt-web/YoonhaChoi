@@ -44,10 +44,17 @@
   border-bottom: 1px solid lightpink;
   font-weight: 700;
 }
+
 .section-table__tbody td {
   padding: 0.8rem 0;
   border-bottom: 1px solid gainsboro;
   font-weight: normal;
+  cursor: pointer;
+}
+
+.section-table__tbody tr:hover {
+  background-color: aliceblue;
+  transition: background-color 0.2s ease;
 }
 
 .section-table__checkbox {
