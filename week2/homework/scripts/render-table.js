@@ -22,7 +22,7 @@ export const renderTable = (data, tbody) => {
           <input type="checkbox" class="section-table__checkbox" data-id="${id}" />
         </td>
         <td >${title}</td>
-        <td class= ${typeClass}>${displayAmount}</td>
+        <td class="${typeClass}">${displayAmount}</td>
         <td >${date}</td>
         <td >${category}</td>
         <td >${payment}</td>
