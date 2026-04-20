@@ -1,5 +1,5 @@
 import { expenses } from "./mock/expense-data.js";
-import { sortDataByDate } from "./utils/filter.js";
+import { applyFilters, sortDataByDate } from "./utils/filter.js";
 import {
   renderTable,
   renderTotal,
@@ -12,6 +12,13 @@ import {
   initModalEvents,
 } from "./scripts/modal.js";
 import { toggleAllCheckboxes, getRemainingData } from "./utils/checkbox.js";
+
+const filterTitle = document.querySelector("#search-title");
+const filterType = document.querySelector("#filter-type");
+const filterCategory = document.querySelector("#filter-category");
+const filterPayment = document.querySelector("#filter-payment");
+const applyBtn = document.querySelectorAll(".search-filter__btn")[0];
+const resetBtn = document.querySelectorAll(".search-filter__btn")[1];
 
 const tbody = document.querySelector(".section-table__tbody");
 const modalDetail = document.querySelector("#modal-detail");
@@ -29,19 +36,36 @@ const storedData = localStorage.getItem("expenseData");
 let data = storedData ? JSON.parse(storedData) : expenses;
 
 const updateUI = () => {
+  const filterValues = {
+    title: filterTitle.value,
+    type: filterType.value,
+    category: filterCategory.value,
+    payment: filterPayment.value,
+  };
+
+  const filteredData = applyFilters(data, filterValues);
+
   const order = sortSelect.value;
-  const sortedData = sortDataByDate(data, order);
+  const sortedData = sortDataByDate(filteredData, order);
 
   renderTable(sortedData, tbody);
-
   const totalNet = getTotalAmount(sortedData);
-
   renderTotal(totalNet, totalNetEl);
 };
 
 updateUI();
 initModalEvents(modalDetail);
 initModalEvents(modalAdd);
+
+applyBtn.addEventListener("click", updateUI);
+
+resetBtn.addEventListener("click", () => {
+  filterTitle.value = "";
+  filterType.value = "all";
+  filterCategory.value = "all";
+  filterPayment.value = "all";
+  updateUI();
+});
 
 sortSelect.addEventListener("change", updateUI);
 btnAdd.addEventListener("click", () => openModal(modalAdd));

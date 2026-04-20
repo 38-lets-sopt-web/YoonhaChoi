@@ -1,4 +1,5 @@
 import { formatAmount } from "../utils/format-amount.js";
+import { CATEGORY_NAME, PAYMENT_NAME } from "../utils/constants.js";
 
 export const renderTable = (data, tbody) => {
   if (!tbody) return;
@@ -6,7 +7,7 @@ export const renderTable = (data, tbody) => {
   if (data.length === 0) {
     tbody.innerHTML = `
       <tr>
-        <td>내역이 없습니다.</td>
+        <td colspan="6">내역이 없습니다.</td>
       </tr>
     `;
     return;
@@ -16,16 +17,19 @@ export const renderTable = (data, tbody) => {
     .map(({ id, title, amount, date, category, payment }) => {
       const { typeClass, displayAmount } = formatAmount(amount);
 
+      const categoryKorean = CATEGORY_NAME[category] || category;
+      const paymentKorean = PAYMENT_NAME[payment] || payment;
+
       return `
       <tr>
         <td>
           <input type="checkbox" class="section-table__checkbox" data-id="${id}" />
         </td>
-        <td >${title}</td>
+        <td>${title}</td>
         <td class="${typeClass}">${displayAmount}</td>
-        <td >${date}</td>
-        <td >${category}</td>
-        <td >${payment}</td>
+        <td>${date}</td>
+        <td>${categoryKorean}</td>
+        <td>${paymentKorean}</td>
       </tr>
     `;
     })

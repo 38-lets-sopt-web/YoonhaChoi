@@ -64,6 +64,10 @@
   transition: background-color 0.2s ease;
 }
 
+.section-table__tbody tr:last-child td {
+  border-bottom: none;
+}
+
 .section-table__checkbox {
   width: 16px;
   height: 16px;

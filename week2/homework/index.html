@@ -178,7 +178,7 @@
           <div class="modal-form__row">
             <div class="modal-form__group">
               <label for="add-type">유형</label>
-              <select id="add-type" name="type">
+              <select id="add-type" name="type" required>
                 <option value="expenses">지출 (-)</option>
                 <option value="income">수입 (+)</option>
               </select>
@@ -205,20 +205,22 @@
               <label for="add-category">카테고리</label>
               <select id="add-category" name="category" required>
                 <option value="">선택</option>
-                <option value="식비">식비</option>
-                <option value="교통">교통</option>
-                <option value="문화">문화</option>
-                <option value="월급">월급</option>
-                <option value="기타">기타</option>
+                <option value="food">식비</option>
+                <option value="salary">월급</option>
+                <option value="culture">문화</option>
+                <option value="transport">교통</option>
+                <option value="life">생활</option>
+                <option value="etc">기타</option>
               </select>
             </div>
             <div class="modal-form__group">
               <label for="add-payment">결제수단</label>
               <select id="add-payment" name="payment" required>
                 <option value="">선택</option>
-                <option value="신용카드">신용카드</option>
-                <option value="체크카드">체크카드</option>
-                <option value="현금">현금</option>
+                <option value="credit-card">신용카드</option>
+                <option value="check-card">체크카드</option>
+                <option value="cash">현금</option>
+                <option value="etc">기타</option>
               </select>
             </div>
           </div>
