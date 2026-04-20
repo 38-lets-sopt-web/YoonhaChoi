@@ -33,3 +33,23 @@ export const renderTable = (data, tbody) => {
 
   tbody.innerHTML = tableHTML;
 };
+
+export const getTotalAmount = (data) => {
+  return data.reduce((sum, item) => sum + item.amount, 0);
+};
+
+export const renderTotal = (totalNet, totalNetEl) => {
+  if (!totalNetEl) return;
+
+  const sign = totalNet > 0 ? "+" : "";
+
+  totalNetEl.textContent = `${sign}${totalNet.toLocaleString()}`;
+
+  totalNetEl.classList.remove("income-text", "expense-text");
+
+  if (totalNet > 0) {
+    totalNetEl.classList.add("income-text");
+  } else if (totalNet < 0) {
+    totalNetEl.classList.add("expense-text");
+  }
+};

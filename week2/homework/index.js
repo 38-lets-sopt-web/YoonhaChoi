@@ -1,6 +1,10 @@
 import { expenses } from "./mock/expense-data.js";
 import { sortDataByDate } from "./utils/filter.js";
-import { renderTable } from "./scripts/render-table.js";
+import {
+  renderTable,
+  renderTotal,
+  getTotalAmount,
+} from "./scripts/render-table.js";
 import {
   renderDetailModal,
   openModal,
@@ -15,6 +19,7 @@ const checkAll = document.querySelector(
   ".section-table__thead .section-table__checkbox",
 );
 const deleteBtn = document.querySelector(".btn--delete");
+const totalNetEl = document.querySelector("#total-net");
 
 const storedData = localStorage.getItem("expenseData");
 let data = storedData ? JSON.parse(storedData) : expenses;
@@ -22,7 +27,12 @@ let data = storedData ? JSON.parse(storedData) : expenses;
 const updateUI = () => {
   const order = sortSelect.value;
   const sortedData = sortDataByDate(data, order);
+
   renderTable(sortedData, tbody);
+
+  const totalNet = getTotalAmount(sortedData);
+
+  renderTotal(totalNet, totalNetEl);
 };
 
 updateUI();

@@ -39,15 +39,17 @@
   text-align: center;
 }
 
-.section-table__thead {
+.section-table__thead,
+.section-table__tfoot {
   background-color: lavenderblush;
+  font-weight: 700;
 }
 
-.section-table th {
-  padding: 0.8rem 0;
+.section-table__thead th,
+.section-table__tfoot td {
+  padding: 1rem 2rem;
   border-top: 1px solid lightpink;
   border-bottom: 1px solid lightpink;
-  font-weight: 700;
 }
 
 .section-table__tbody td {
@@ -74,4 +76,10 @@
 
 .expense-text {
   color: red;
+}
+
+.total-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8rem;
 }
