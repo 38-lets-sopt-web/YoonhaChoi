@@ -1,8 +1,12 @@
+@import "./table.css";
+
 html {
   background-color: lavenderblush;
 }
 
 main {
+  display: grid;
+  gap: 1rem;
   padding: 2rem;
 }
 
@@ -86,59 +90,4 @@ main {
   &:hover {
     opacity: 0.8;
   }
-}
-
-/* 표 */
-
-.section-table {
-  padding: 1.3rem;
-  border-radius: 12px;
-  background-color: white;
-}
-
-.section-table__header {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 1.5rem;
-}
-
-.section-table__button-container {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.btn {
-  padding: 0.8rem 1.2rem;
-  border: none;
-  border-radius: 6px;
-  background-color: black;
-  color: white;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
-.section-table__content {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-}
-
-.section-table__thead {
-  background-color: lavenderblush;
-}
-
-.section-table__th {
-  padding: 1rem 0;
-  border-top: 1px solid lightpink;
-  border-bottom: 1px solid lightpink;
-  font-weight: 700;
-}
-
-.section-table__checkbox {
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
 }
