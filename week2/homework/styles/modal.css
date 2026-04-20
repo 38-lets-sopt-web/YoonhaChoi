@@ -2,7 +2,7 @@
   border: none;
   border-radius: 12px;
   padding: 0;
-  width: 20rem;
+  width: 30rem;
   background-color: white;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
@@ -52,4 +52,31 @@
 
 .modal__info-value {
   color: black;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.modal-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.modal-form__group input,
+.modal-form__group select {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.modal-form__row {
+  display: flex;
+  gap: 1rem;
 }

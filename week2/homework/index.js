@@ -8,18 +8,22 @@ import {
 import {
   renderDetailModal,
   openModal,
+  closeModal,
   initModalEvents,
 } from "./scripts/modal.js";
 import { toggleAllCheckboxes, getRemainingData } from "./utils/checkbox.js";
 
 const tbody = document.querySelector(".section-table__tbody");
 const modalDetail = document.querySelector("#modal-detail");
+const modalAdd = document.querySelector("#modal-add");
+const btnAdd = document.querySelector(".btn--add");
 const sortSelect = document.querySelector("#sort-order");
 const checkAll = document.querySelector(
   ".section-table__thead .section-table__checkbox",
 );
 const deleteBtn = document.querySelector(".btn--delete");
 const totalNetEl = document.querySelector("#total-net");
+const addForm = document.querySelector("#form-add-expense");
 
 const storedData = localStorage.getItem("expenseData");
 let data = storedData ? JSON.parse(storedData) : expenses;
@@ -37,8 +41,10 @@ const updateUI = () => {
 
 updateUI();
 initModalEvents(modalDetail);
+initModalEvents(modalAdd);
 
 sortSelect.addEventListener("change", updateUI);
+btnAdd.addEventListener("click", () => openModal(modalAdd));
 
 tbody.addEventListener("click", (e) => {
   if (e.target.type === "checkbox") return;
@@ -89,4 +95,33 @@ deleteBtn.addEventListener("click", () => {
     updateUI();
     checkAll.checked = false;
   }
+});
+
+addForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(addForm);
+  const type = formData.get("type");
+  let amount = Number(formData.get("amount"));
+
+  if (type === "expenses") {
+    amount = -amount;
+  }
+
+  const newItem = {
+    id: Date.now(),
+    title: formData.get("title"),
+    amount: amount,
+    date: formData.get("date").replace(/-/g, "."),
+    category: formData.get("category"),
+    payment: formData.get("payment"),
+  };
+
+  data = [newItem, ...data];
+
+  localStorage.setItem("expenseData", JSON.stringify(data));
+  updateUI();
+
+  addForm.reset();
+  closeModal(modalAdd);
 });

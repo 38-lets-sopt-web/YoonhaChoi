@@ -153,5 +153,79 @@
         </ul>
       </div>
     </dialog>
+
+    <dialog class="modal" id="modal-add">
+      <div class="modal-inner">
+        <div class="modal-header">
+          <h2 class="modal-header__title">내역 추가</h2>
+          <button class="modal-header__close" type="button" id="btn-close-add">
+            &times;
+          </button>
+        </div>
+
+        <form class="modal-form" id="form-add-expense">
+          <div class="modal-form__group">
+            <label for="add-title">제목</label>
+            <input
+              type="text"
+              id="add-title"
+              name="title"
+              placeholder="제목을 입력하세요"
+              required
+            />
+          </div>
+
+          <div class="modal-form__row">
+            <div class="modal-form__group">
+              <label for="add-type">유형</label>
+              <select id="add-type" name="type">
+                <option value="expenses">지출 (-)</option>
+                <option value="income">수입 (+)</option>
+              </select>
+            </div>
+            <div class="modal-form__group">
+              <label for="add-amount">금액 (숫자만)</label>
+              <input
+                type="number"
+                id="add-amount"
+                name="amount"
+                placeholder="금액을 입력하세요"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="modal-form__group">
+            <label for="add-date">날짜</label>
+            <input type="date" id="add-date" name="date" required />
+          </div>
+
+          <div class="modal-form__row">
+            <div class="modal-form__group">
+              <label for="add-category">카테고리</label>
+              <select id="add-category" name="category" required>
+                <option value="">선택</option>
+                <option value="식비">식비</option>
+                <option value="교통">교통</option>
+                <option value="문화">문화</option>
+                <option value="월급">월급</option>
+                <option value="기타">기타</option>
+              </select>
+            </div>
+            <div class="modal-form__group">
+              <label for="add-payment">결제수단</label>
+              <select id="add-payment" name="payment" required>
+                <option value="">선택</option>
+                <option value="신용카드">신용카드</option>
+                <option value="체크카드">체크카드</option>
+                <option value="현금">현금</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn">추가</button>
+        </form>
+      </div>
+    </dialog>
   </body>
 </html>
