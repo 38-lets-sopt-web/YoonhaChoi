@@ -2,9 +2,7 @@ import { CATEGORY_NAME, PAYMENT_NAME } from "./constants.js";
 
 const matchesMappedValue = (selectedValue, itemValue, valueMap) => {
   if (selectedValue === "all") return true;
-
-  const mappedLabel = valueMap[selectedValue];
-  return itemValue === selectedValue || itemValue === mappedLabel;
+  return itemValue === valueMap[selectedValue];
 };
 
 export const sortDataByDate = (data, order) => {
@@ -17,8 +15,8 @@ export const sortDataByDate = (data, order) => {
 
 export const applyFilters = (data, { title, type, category, payment }) => {
   return data.filter((item) => {
-    const matchTitle = item.title.toLowerCase().includes(title.toLowerCase());
-
+    const matchTitle =
+      !title || item.title?.toLowerCase().includes(title.toLowerCase());
     let matchType = true;
     if (type === "income") matchType = item.amount > 0;
     if (type === "expenses") matchType = item.amount < 0;

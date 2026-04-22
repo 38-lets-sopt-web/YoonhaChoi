@@ -23,7 +23,7 @@
       <section class="search-filter">
         <h2 class="search-filter__title">검색 필터</h2>
         <div class="search-filter__contents">
-          <div class="input-container-grid1">
+          <div class="search-filter__group search-filter__group--full">
             <label for="search-title">제목</label>
             <input
               class="search-filter__input"
@@ -34,7 +34,7 @@
             />
           </div>
 
-          <div class="input-container-grid3">
+          <div class="search-filter__group">
             <label for="filter-type">유형</label>
             <select class="search-filter__select" id="filter-type" name="type">
               <option value="all">전체</option>
@@ -43,7 +43,7 @@
             </select>
           </div>
 
-          <div class="input-container-grid3">
+          <div class="search-filter__group">
             <label for="filter-category">카테고리</label>
             <select
               class="search-filter__select"
@@ -60,7 +60,7 @@
             </select>
           </div>
 
-          <div class="input-container-grid3">
+          <div class="search-filter__group">
             <label for="filter-payment">결제수단</label>
             <select
               class="search-filter__select"
@@ -121,6 +121,7 @@
       </section>
     </main>
 
+    <!-- 상세 모달 -->
     <dialog class="modal" id="modal-detail">
       <div class="modal-inner">
         <div class="modal-header">
@@ -156,6 +157,7 @@
       </div>
     </dialog>
 
+    <!-- 내역 추가 모달 -->
     <dialog class="modal" id="modal-add">
       <div class="modal-inner">
         <div class="modal-header">

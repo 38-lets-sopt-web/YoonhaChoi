@@ -23,7 +23,7 @@ export const renderTable = (data, tbody) => {
       return `
       <tr>
         <td>
-          <input type="checkbox" class="section-table__checkbox" data-id="${id}" />
+          <input type="checkbox" class="section-table__checkbox" data-id="${id}" aria-label="${title} 내역 선택"/>
         </td>
         <td>${title}</td>
         <td class="${typeClass}">${displayAmount}</td>
