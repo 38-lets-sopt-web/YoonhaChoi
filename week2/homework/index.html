@@ -75,15 +75,22 @@
             </select>
           </div>
 
-          <button type="button" class="search-filter__btn">적용</button>
-          <button type="button" class="search-filter__btn">초기화</button>
+          <button type="button" id="apply-btn" class="search-filter__btn">
+            적용
+          </button>
+          <button type="button" id="reset-btn" class="search-filter__btn">
+            초기화
+          </button>
         </div>
       </section>
 
       <!-- 표 -->
       <section class="section-table">
         <div class="section-table__header">
-          <select class="search-filter__select" id="sort-order">
+          <select
+            class="search-filter__select section-table__sort"
+            id="sort-order"
+          >
             <option value="date-desc">날짜 내림차순</option>
             <option value="date-asc">날짜 오름차순</option>
           </select>
@@ -97,7 +104,12 @@
           <thead class="section-table__thead">
             <tr>
               <th>
-                <input type="checkbox" class="section-table__checkbox" />
+                <input
+                  type="checkbox"
+                  class="section-table__checkbox"
+                  id="check-all"
+                  aria-label="모든 내역 선택"
+                />
               </th>
               <th>제목</th>
               <th>금액</th>

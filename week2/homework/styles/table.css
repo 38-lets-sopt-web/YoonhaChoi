@@ -10,7 +10,7 @@
   margin-bottom: 1.5rem;
 }
 
-#sort-order {
+.section-table__sort {
   flex: none;
   width: 8rem;
 }
@@ -52,6 +52,12 @@
   border-bottom: 1px solid lightpink;
 }
 
+.section-table__checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
 .section-table__tbody td {
   padding: 0.8rem 0;
   border-bottom: 1px solid gainsboro;
@@ -68,22 +74,16 @@
   border-bottom: none;
 }
 
-.section-table__checkbox {
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-}
-
-.income-text {
-  color: blue;
-}
-
-.expense-text {
-  color: red;
-}
-
 .total-container {
   display: flex;
   justify-content: space-between;
   padding: 0 8rem;
+}
+
+.text--income {
+  color: blue;
+}
+
+.text--expense {
+  color: red;
 }

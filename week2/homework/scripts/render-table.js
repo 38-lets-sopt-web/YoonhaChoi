@@ -49,11 +49,11 @@ export const renderTotal = (totalNet, totalNetEl) => {
 
   totalNetEl.textContent = `${sign}${totalNet.toLocaleString()}`;
 
-  totalNetEl.classList.remove("income-text", "expense-text");
+  totalNetEl.classList.remove("text--income", "text--expense");
 
   if (totalNet > 0) {
-    totalNetEl.classList.add("income-text");
+    totalNetEl.classList.add("text--income");
   } else if (totalNet < 0) {
-    totalNetEl.classList.add("expense-text");
+    totalNetEl.classList.add("text--expense");
   }
 };
