@@ -1,5 +1,11 @@
+import GamePage from "./pages/game-page";
+
 function App() {
-  return <h1>ㅇㄴㅇ </h1>;
+  return (
+    <>
+      <GamePage />
+    </>
+  );
 }
 
 export default App;

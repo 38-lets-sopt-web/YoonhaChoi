@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-yellow-50 my-5 mx-[50px];
+  }
+}
