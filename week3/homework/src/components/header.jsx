@@ -1,7 +1,23 @@
-const Header = () => {
+import Button from "./button";
+
+const Header = ({ activeTab = "game" }) => {
   return (
-    <header className="flex items-center p-4 bg-yellow-200 rounded-xl">
+    <header className="flex items-center p-4 bg-yellow-200 rounded-xl gap-3">
       <h1 className="text-xl font-bold">두더지 게임</h1>
+      <nav className="flex gap-1.5">
+        <Button
+          variant={activeTab === "game" ? "tabActive" : "tabInactive"}
+          onClick={() => {}}
+        >
+          게임
+        </Button>
+        <Button
+          variant={activeTab === "ranking" ? "tabActive" : "tabInactive"}
+          onClick={() => {}}
+        >
+          랭킹
+        </Button>
+      </nav>
     </header>
   );
 };
