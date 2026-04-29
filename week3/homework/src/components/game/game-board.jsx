@@ -1,9 +1,10 @@
 import Button from "../common/button";
+import Card from "../common/card";
 import LevelDropdown from "../common/level-dropdown";
 
 const GameBoard = () => {
   return (
-    <div className="bg-yellow-100 w-full rounded-xl p-5">
+    <div className="bg-yellow-100 w-full h-160 rounded-xl p-5">
       <div className="flex justify-between items-center mb-4">
         <LevelDropdown />
         <div className="flex gap-1.5">
@@ -15,6 +16,7 @@ const GameBoard = () => {
           </Button>
         </div>
       </div>
+      <Card />
     </div>
   );
 };
