@@ -2,16 +2,16 @@ import Button from "../common/button";
 import Card from "../common/card";
 import LevelDropdown from "../common/level-dropdown";
 
-const GameBoard = () => {
+const GameBoard = ({ level, onLevelChange, onStart, onStop }) => {
   return (
     <div className="bg-yellow-100 w-full h-160 rounded-xl p-5">
       <div className="flex justify-between items-center mb-4">
-        <LevelDropdown />
+        <LevelDropdown level={level} onLevelChange={onLevelChange} />
         <div className="flex gap-1.5">
-          <Button variant="start" onClick={() => {}}>
+          <Button variant="start" onClick={onStart}>
             시작
           </Button>
-          <Button variant="stop" onClick={() => {}}>
+          <Button variant="stop" onClick={onStop}>
             중지
           </Button>
         </div>

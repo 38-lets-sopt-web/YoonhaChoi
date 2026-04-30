@@ -1,9 +1,9 @@
 import StateBox from "../common/state-box";
 
-const ScoreBoard = () => {
+const ScoreBoard = ({ timeLeft }) => {
   return (
     <aside className="grid gap-4">
-      <StateBox title="남은 시간"> 0</StateBox>
+      <StateBox title="남은 시간"> {timeLeft}</StateBox>
 
       <StateBox title="총 점수">0</StateBox>
 
