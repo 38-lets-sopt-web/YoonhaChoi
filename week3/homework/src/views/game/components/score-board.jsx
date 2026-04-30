@@ -1,4 +1,4 @@
-import StateBox from "../common/state-box";
+import StateBox from "./state-box";
 
 const ScoreBoard = ({ timeLeft }) => {
   return (

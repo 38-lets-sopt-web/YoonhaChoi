@@ -1,9 +1,9 @@
-import GamePage from "./pages/game-page";
+import MainPage from "./pages/main-page";
 
 function App() {
   return (
     <>
-      <GamePage />
+      <MainPage />
     </>
   );
 }

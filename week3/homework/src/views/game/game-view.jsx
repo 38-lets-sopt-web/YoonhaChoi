@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import ScoreBoard from "./score-board";
-import GameBoard from "./game-board";
+import ScoreBoard from "./components/score-board";
+import GameBoard from "./components/game-board";
 
 const LIMIT_TIMES = {
   1: 15,

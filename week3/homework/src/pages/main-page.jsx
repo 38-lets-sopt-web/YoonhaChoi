@@ -1,9 +1,9 @@
-import Header from "../components/common/header";
-import GameView from "../components/game/game-view";
-import RankingView from "../components/ranking/ranking-view";
+import Header from "../ui/header";
+import GameView from "../views/game/game-view";
+import RankingView from "../views/ranking/ranking-view";
 import { useState } from "react";
 
-const GamePage = () => {
+const MainPage = () => {
   const [mode, setMode] = useState("game");
   return (
     <div className="grid gap-7">
@@ -12,4 +12,4 @@ const GamePage = () => {
     </div>
   );
 };
-export default GamePage;
+export default MainPage;

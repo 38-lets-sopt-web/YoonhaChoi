@@ -1,6 +1,6 @@
-import Button from "../common/button";
-import Card from "../common/card";
-import LevelDropdown from "../common/level-dropdown";
+import Button from "../../../ui/button";
+import Card from "../../../ui/card";
+import LevelDropdown from "./level-dropdown";
 
 const GameBoard = ({ level, onLevelChange, onStart, onStop }) => {
   return (
