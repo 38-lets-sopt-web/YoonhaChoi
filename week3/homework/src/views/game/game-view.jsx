@@ -1,63 +1,37 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ScoreBoard from "./components/score-board";
 import GameBoard from "./components/game-board";
-
-const LIMIT_TIMES = {
-  1: 15,
-  2: 20,
-  3: 30,
-};
+import { useGameLogic } from "./hooks/use-game-logic";
 
 const GameView = () => {
   const [level, setLevel] = useState(1);
-  const [timeLeft, setTimeLeft] = useState(LIMIT_TIMES[1]);
-  const [isActive, setIsActive] = useState(false);
+  const gridCount = level + 1;
+  const totalCards = gridCount * gridCount;
 
-  useEffect(() => {
-    let timer = null;
-
-    if (isActive) {
-      timer = setInterval(() => {
-        setTimeLeft((prev) => {
-          if (prev <= 1) {
-            clearInterval(timer);
-            setIsActive(false);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    }
-
-    return () => {
-      if (timer) clearInterval(timer);
-    };
-  }, [isActive]);
-
-  const handleLevelChange = (newLevel) => {
-    setLevel(newLevel);
-    setTimeLeft(LIMIT_TIMES[newLevel]);
-  };
-
-  const handleStart = () => {
-    setTimeLeft(LIMIT_TIMES[level]);
-    setIsActive(true);
-  };
-
-  const handleStop = () => {
-    setIsActive(false);
-  };
+  const {
+    score,
+    timeLeft,
+    targetHole,
+    targetType,
+    isHit,
+    startGame,
+    stopGame,
+    bonk,
+  } = useGameLogic(level, totalCards);
 
   return (
     <div className="flex gap-5 w-full h-full">
-      <ScoreBoard timeLeft={timeLeft} />
-
+      <ScoreBoard timeLeft={timeLeft} score={score} />
       <GameBoard
         level={level}
-        onLevelChange={handleLevelChange}
-        onStart={handleStart}
-        onStop={handleStop}
-        isActive={isActive}
+        onLevelChange={setLevel}
+        totalCards={totalCards}
+        targetHole={targetHole}
+        targetType={targetType}
+        isHit={isHit}
+        startGame={startGame}
+        stopGame={stopGame}
+        bonk={bonk}
       />
     </div>
   );
