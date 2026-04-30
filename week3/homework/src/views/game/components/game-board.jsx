@@ -3,8 +3,17 @@ import Card from "../../../ui/card";
 import LevelDropdown from "./level-dropdown";
 
 const GameBoard = ({ level, onLevelChange, onStart, onStop }) => {
+  const gridColsStyle = {
+    1: "grid-cols-2",
+    2: "grid-cols-3",
+    3: "grid-cols-4",
+  }[level];
+
+  const gridCount = level + 1;
+  const totalCards = gridCount * gridCount;
+
   return (
-    <div className="bg-yellow-100 w-full h-160 rounded-xl p-5">
+    <div className="flex flex-col bg-yellow-100 w-full rounded-xl p-5">
       <div className="flex justify-between items-center mb-4">
         <LevelDropdown level={level} onLevelChange={onLevelChange} />
         <div className="flex gap-1.5">
@@ -16,7 +25,11 @@ const GameBoard = ({ level, onLevelChange, onStart, onStop }) => {
           </Button>
         </div>
       </div>
-      <Card />
+      <div className={`grid ${gridColsStyle} gap-4  p-4 h-full`}>
+        {Array.from({ length: totalCards }).map((_, index) => (
+          <Card key={index} />
+        ))}
+      </div>
     </div>
   );
 };
