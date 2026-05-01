@@ -4,7 +4,7 @@ const LEVEL_OPTIONS = [
   { label: "Level 3", value: 3 },
 ];
 
-const LevelDropdown = ({ level, onLevelChange }) => {
+const LevelDropdown = ({ level, disabled, onLevelChange }) => {
   const handleChange = (e) => {
     onLevelChange(Number(e.target.value));
   };
@@ -13,6 +13,7 @@ const LevelDropdown = ({ level, onLevelChange }) => {
     <select
       className="flex rounded-xl bg-green-50 px-4 py-2 cursor-pointer"
       value={level}
+      disabled={disabled}
       onChange={handleChange}
     >
       {LEVEL_OPTIONS.map(({ label, value: optionValue }) => (

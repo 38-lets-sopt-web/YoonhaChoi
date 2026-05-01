@@ -12,6 +12,7 @@ const GameBoard = ({
   startGame,
   stopGame,
   bonk,
+  isActive,
 }) => {
   const gridColsStyle = {
     1: "grid-cols-2",
@@ -22,9 +23,13 @@ const GameBoard = ({
   return (
     <div className="flex flex-col bg-yellow-100 w-full rounded-xl p-5">
       <div className="flex justify-between items-center mb-4">
-        <LevelDropdown level={level} onLevelChange={onLevelChange} />
+        <LevelDropdown
+          level={level}
+          onLevelChange={onLevelChange}
+          disabled={isActive}
+        />
         <div className="flex gap-1.5">
-          <Button variant="start" onClick={startGame}>
+          <Button variant="start" onClick={startGame} disabled={isActive}>
             시작
           </Button>
           <Button variant="stop" onClick={stopGame}>

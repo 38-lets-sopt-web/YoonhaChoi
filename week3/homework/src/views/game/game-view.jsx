@@ -14,6 +14,7 @@ const GameView = () => {
     failCount,
     message,
     timeLeft,
+    isActive,
     targetHole,
     targetType,
     isHit,
@@ -32,6 +33,7 @@ const GameView = () => {
         message={message}
       />
       <GameBoard
+        isActive={isActive}
         level={level}
         onLevelChange={setLevel}
         totalCards={totalCards}

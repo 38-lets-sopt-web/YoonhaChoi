@@ -96,5 +96,6 @@ export const useGameLogic = (level, totalCards) => {
     startGame,
     stopGame,
     bonk,
+    isActive,
   };
 };

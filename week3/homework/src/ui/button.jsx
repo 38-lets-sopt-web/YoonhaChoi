@@ -1,4 +1,4 @@
-const Button = ({ children, variant, onClick }) => {
+const Button = ({ children, disabled, variant, onClick }) => {
   const base =
     "px-4 py-1 text-sm rounded-full transition-colors hover:opacity-70";
 
@@ -11,7 +11,11 @@ const Button = ({ children, variant, onClick }) => {
   };
 
   return (
-    <button onClick={onClick} className={`${base} ${variants[variant]}`}>
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`${base} ${variants[variant]}`}
+    >
       {children}
     </button>
   );
