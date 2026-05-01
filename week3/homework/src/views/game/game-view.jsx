@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ScoreBoard from "./components/score-board";
 import GameBoard from "./components/game-board";
+import Modal from "../../ui/modal";
 import { useGameLogic } from "./hooks/use-game-logic";
 
 const GameView = () => {
@@ -21,6 +22,7 @@ const GameView = () => {
     startGame,
     stopGame,
     bonk,
+    isModalOpen,
   } = useGameLogic(level, totalCards);
 
   return (
@@ -44,6 +46,8 @@ const GameView = () => {
         stopGame={stopGame}
         bonk={bonk}
       />
+
+      <Modal isOpen={isModalOpen} level={level} score={score} />
     </div>
   );
 };

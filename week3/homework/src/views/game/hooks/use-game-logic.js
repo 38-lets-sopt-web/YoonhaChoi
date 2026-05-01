@@ -22,6 +22,7 @@ export const useGameLogic = (level, totalCards) => {
   const [successCount, setSuccessCount] = useState(0);
   const [failCount, setFailCount] = useState(0);
   const [message, setMessage] = useState("수달 잡으러가자!");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { timeLeft, isActive, startTimer, stopTimer } = useTimer(
     LIMIT_TIMES[level],
@@ -61,26 +62,31 @@ export const useGameLogic = (level, totalCards) => {
   };
 
   useEffect(() => {
-    let timeoutId;
+    let modalTimeoutId;
+    let resetTimeoutId;
 
     if (timeLeft === 0 && !isActive && message !== "수달 잡으러가자!") {
-      timeoutId = setTimeout(() => {
-        alert(`게임 종료뜨 최종 점수는 ${score}점`);
+      modalTimeoutId = setTimeout(() => {
+        setIsModalOpen(true);
+      }, 0);
 
-        if (score > 0) {
-          saveGameResult(level, score, LIMIT_TIMES[level]);
-        }
+      if (score > 0) {
+        saveGameResult(level, score, LIMIT_TIMES[level]);
+      }
 
+      resetTimeoutId = setTimeout(() => {
+        setIsModalOpen(false);
         setScore(0);
         setSuccessCount(0);
         setFailCount(0);
         setMessage("수달 잡으러가자!");
         resetOtter();
-      }, 10);
+      }, 3000);
     }
 
     return () => {
-      if (timeoutId) clearTimeout(timeoutId);
+      if (modalTimeoutId) clearTimeout(modalTimeoutId);
+      if (resetTimeoutId) clearTimeout(resetTimeoutId);
     };
   }, [timeLeft, isActive, score, message, resetOtter, level]);
 
@@ -97,5 +103,6 @@ export const useGameLogic = (level, totalCards) => {
     stopGame,
     bonk,
     isActive,
+    isModalOpen,
   };
 };
