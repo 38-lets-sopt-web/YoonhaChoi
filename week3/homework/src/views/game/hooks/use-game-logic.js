@@ -4,6 +4,19 @@ import { useOtter } from "./use-otter";
 
 const LIMIT_TIMES = { 1: 15, 2: 20, 3: 30 };
 
+const saveGameResult = (level, score) => {
+  const existingRecords = JSON.parse(
+    localStorage.getItem("otterRecords") || "[]",
+  );
+  const newRecord = {
+    level: level,
+    score: score,
+    clearTime: new Date().toLocaleString("ko-KR"),
+  };
+  existingRecords.push(newRecord);
+  localStorage.setItem("otterRecords", JSON.stringify(existingRecords));
+};
+
 export const useGameLogic = (level, totalCards) => {
   const [score, setScore] = useState(0);
   const [successCount, setSuccessCount] = useState(0);
@@ -53,6 +66,11 @@ export const useGameLogic = (level, totalCards) => {
     if (timeLeft === 0 && !isActive && message !== "수달 잡으러가자!") {
       timeoutId = setTimeout(() => {
         alert(`게임 종료뜨 최종 점수는 ${score}점`);
+
+        if (score > 0) {
+          saveGameResult(level, score, LIMIT_TIMES[level]);
+        }
+
         setScore(0);
         setSuccessCount(0);
         setFailCount(0);
@@ -64,7 +82,7 @@ export const useGameLogic = (level, totalCards) => {
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [timeLeft, isActive, score, message, resetOtter]);
+  }, [timeLeft, isActive, score, message, resetOtter, level]);
 
   return {
     score,
