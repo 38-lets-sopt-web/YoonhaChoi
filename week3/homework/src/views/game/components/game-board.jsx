@@ -53,8 +53,8 @@ const GameBoard = ({
           }
 
           return (
-            <div key={index}>
-              <Card type={status} onClick={() => bonk(index)} />
+            <div key={index} onClick={() => bonk(index)}>
+              <Card type={status} />
             </div>
           );
         })}

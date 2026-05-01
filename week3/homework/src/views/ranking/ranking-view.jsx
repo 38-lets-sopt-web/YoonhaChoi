@@ -30,7 +30,7 @@ const RankingView = () => {
   };
 
   return (
-    <div className="bg-yellow-100 w-full h-160 rounded-xl p-5">
+    <div className="bg-yellow-100 w-full h-full rounded-xl p-5">
       <div className="flex justify-between items-center mb-4">
         <p className="text-xl font-semibold">랭킹보드</p>
         <Button variant="stop" onClick={handleReset}>
