@@ -10,6 +10,9 @@ const GameView = () => {
 
   const {
     score,
+    successCount,
+    failCount,
+    message,
     timeLeft,
     targetHole,
     targetType,
@@ -21,7 +24,13 @@ const GameView = () => {
 
   return (
     <div className="flex gap-5 w-full h-full">
-      <ScoreBoard timeLeft={timeLeft} score={score} />
+      <ScoreBoard
+        timeLeft={timeLeft}
+        score={score}
+        successCount={successCount}
+        failCount={failCount}
+        message={message}
+      />
       <GameBoard
         level={level}
         onLevelChange={setLevel}
