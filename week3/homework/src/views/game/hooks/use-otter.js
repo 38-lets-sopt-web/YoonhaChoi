@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export const useOtter = (isActive, totalCards) => {
   const [targetHole, setTargetHole] = useState(null);
@@ -7,12 +7,12 @@ export const useOtter = (isActive, totalCards) => {
 
   const [normalCount, setNormalCount] = useState(0);
 
-  const resetOtter = () => {
+  const resetOtter = useCallback(() => {
     setTargetHole(null);
     setTargetType(null);
     setIsHit(false);
     setNormalCount(0);
-  };
+  }, []);
 
   useEffect(() => {
     if (!isActive) return;
