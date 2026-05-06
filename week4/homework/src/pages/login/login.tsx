@@ -2,6 +2,7 @@ import { useState } from "react";
 import InputField from "@shared/ui/input-field/input-field";
 import { Link } from "react-router";
 import Button from "@shared/ui/button/button";
+import Character from "@shared/ui/character/character";
 
 export default function LoginForm() {
   const [id, setId] = useState("");
@@ -20,6 +21,8 @@ export default function LoginForm() {
   return (
     <div className="flex min-h-screen items-center">
       <form className="mx-auto w-full max-w-lg">
+        <Character />
+
         <h1 className="text-2xl font-bold mb-6 text-center">SOPT MEMBERS</h1>
 
         <InputField
