@@ -1,13 +1,21 @@
+import { useNavigate } from "react-router";
+
 interface CardProps {
+  id: number;
   name: string;
   part: string;
-  onClick?: () => void;
 }
 
-const MemberCard = ({ name, part, onClick }: CardProps) => {
+const MemberCard = ({ id, name, part }: CardProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/mypage/members/${id}`);
+  };
+
   return (
     <div
-      onClick={onClick}
+      onClick={handleClick}
       className="flex flex-col items-center justify-center h-25 w-50 bg-white rounded-2xl cursor-pointer "
     >
       <p className="mb-3 text-lg font-bold">{name}</p>

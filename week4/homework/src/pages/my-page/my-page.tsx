@@ -27,7 +27,12 @@ const MyPage = () => {
   return (
     <div className="flex flex-wrap gap-4">
       {userList.map((user) => (
-        <MemberCard key={user.id} name={user.name} part={user.part} />
+        <MemberCard
+          key={user.id}
+          id={user.id}
+          name={user.name}
+          part={user.part}
+        />
       ))}
     </div>
   );
