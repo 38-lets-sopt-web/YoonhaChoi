@@ -2,5 +2,5 @@ export const routePath = {
   LOGIN: "/login",
   SIGNUP: "/signup",
   MYPAGE: "/mypage",
-  MEMBERS: "/members",
+  MEMBERS: "/mypage/members",
 } as const;

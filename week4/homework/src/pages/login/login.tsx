@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import Button from "@shared/ui/button/button";
 import Character from "@shared/ui/character/character";
 
-export default function LoginForm() {
+const Login = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -56,4 +56,6 @@ export default function LoginForm() {
       </form>
     </div>
   );
-}
+};
+
+export default Login;
