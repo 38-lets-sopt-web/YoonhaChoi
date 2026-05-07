@@ -1,10 +1,12 @@
 import { useState } from "react";
 import InputField from "@shared/ui/input-field/input-field";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Button from "@shared/ui/button/button";
 import Character from "@shared/ui/character/character";
+import { api } from "@shared/apis/instance";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,12 +20,28 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      await api.post("/auth/signin", {
+        loginId: id,
+        password: password,
+      });
+
+      alert("로그인에 성공했습니다!");
+      navigate("/mypage");
+    } catch (error) {
+      console.error("로그인 실패:", error);
+    }
+  };
+
   return (
     <div className="flex min-h-screen items-center">
-      <form className="mx-auto w-full max-w-lg">
+      <form onSubmit={handleSubmit} className="mx-auto w-full max-w-lg">
         <Character />
 
-        <h1 className="text-2xl font-bold mb-6 text-center">SOPT MEMBERS</h1>
+        <h1 className="mb-6 text-2xl font-bold text-center">SOPT MEMBERS</h1>
 
         <InputField
           label="아이디"
@@ -40,16 +58,11 @@ const Login = () => {
           secret
         />
 
-        <Button
-          text="로그인"
-          type="submit"
-          disabled={!isFormValid}
-          onClick={() => {}}
-        />
+        <Button text="로그인" type="submit" disabled={!isFormValid} />
 
         <Link
           to="/signup"
-          className="block text-center mt-1 text-sky-500 hover:text-sky-600"
+          className="block mt-1 text-center text-sky-500 hover:text-sky-600"
         >
           회원가입
         </Link>

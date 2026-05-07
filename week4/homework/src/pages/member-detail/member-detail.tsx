@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { api } from "@shared/apis/instance";
 
-interface MembersProps {
+interface MemberDetailProps {
   name: string;
   loginId: string;
   email: string;
@@ -12,7 +12,7 @@ interface MembersProps {
 
 const MemberDetail = () => {
   const { id } = useParams();
-  const [user, setUser] = useState<MembersProps | null>(null);
+  const [user, setUser] = useState<MemberDetailProps | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
