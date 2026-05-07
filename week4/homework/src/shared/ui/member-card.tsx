@@ -10,7 +10,7 @@ const MemberCard = ({ id, name, part }: CardProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/mypage/members/${id}`);
+    navigate(`/members/${id}`);
   };
 
   return (

@@ -1,10 +1,11 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import MyPage from "../pages/my-page/my-page";
+import MyPage from "@pages/my-page/mypage";
 import SignUp from "@pages/signup/signup";
-import Login from "../pages/login/login";
+import Login from "@pages/login/login";
 import { routePath } from "./path";
 import Header from "@shared/ui/header";
 import Members from "@pages/members/members";
+import MemberDetail from "@pages/member-detail/member-detail";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: routePath.MEMBERS,
         element: <Members />,
+      },
+      {
+        path: routePath.MEMBERDETAIL,
+        element: <MemberDetail />,
       },
     ],
   },

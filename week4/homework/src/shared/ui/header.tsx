@@ -5,7 +5,7 @@ const Header = () => {
 
   const tabs = [
     { name: "내 정보", path: "/mypage" },
-    { name: "회원 조회", path: "/mypage/members" },
+    { name: "회원 조회", path: "/members" },
     { name: "로그아웃", path: "/logout" },
   ];
 
