@@ -33,7 +33,7 @@ const InputField = ({
           placeholder={placeHolder}
           value={value}
           onChange={onChange}
-          className={`w-full py-3 px-3 my-3 border border-gray-400 rounded-lg focus:outline-none focus:border-sky-500 placeholder:text-gray-500 ${
+          className={`w-full p-3 my-3 border border-gray-400 rounded-lg focus:outline-none focus:border-sky-500 placeholder:text-gray-500 ${
             secret ? "pr-12" : ""
           }`}
         />
