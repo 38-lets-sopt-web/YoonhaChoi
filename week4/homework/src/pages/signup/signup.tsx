@@ -2,28 +2,50 @@ import { useState } from "react";
 import IdStep from "./components/id-step";
 import PasswordStep from "./components/password-step";
 import ProfileStep from "./components/profile-step";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { api } from "@shared/apis/instance";
 
 type Step = "ID" | "PASSWORD" | "PERSONAL_INFO";
 
-export default function SignUpPage() {
+interface SignupFormData {
+  loginId: string;
+  password: string;
+  name: string;
+  email: string;
+  age: string;
+  part: string;
+}
+
+const SignUp = () => {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState<Step>("ID");
-  const [formData, setFormData] = useState({
-    id: "",
+  const [formData, setFormData] = useState<SignupFormData>({
+    loginId: "",
     password: "",
-    checkPassword: "",
     name: "",
     email: "",
     age: "",
     part: "",
   });
 
-  const handleUpdateData = (key: string, value: string) => {
+  const handleUpdateData = (key: keyof SignupFormData, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
   };
 
   const handleSubmit = async () => {
-    console.log("서버 제출", formData);
+    try {
+      await api.post("/auth/signup", {
+        loginId: formData.loginId,
+        password: formData.password,
+        name: formData.name,
+        email: formData.email,
+        age: Number(formData.age),
+        part: formData.part,
+      });
+      navigate("/login");
+    } catch (error) {
+      console.error("회원가입 실패했습니다.", error);
+    }
   };
 
   const renderStep = () => {
@@ -31,8 +53,8 @@ export default function SignUpPage() {
       case "ID":
         return (
           <IdStep
-            id={formData.id}
-            updateData={handleUpdateData}
+            loginId={formData.loginId}
+            onChange={(value) => handleUpdateData("loginId", value)}
             onNext={() => setCurrentStep("PASSWORD")}
           />
         );
@@ -40,8 +62,7 @@ export default function SignUpPage() {
         return (
           <PasswordStep
             password={formData.password}
-            checkPassword={formData.checkPassword}
-            updateData={handleUpdateData}
+            onChange={(value) => handleUpdateData("password", value)}
             onNext={() => setCurrentStep("PERSONAL_INFO")}
           />
         );
@@ -52,7 +73,7 @@ export default function SignUpPage() {
             email={formData.email}
             age={formData.age}
             part={formData.part}
-            updateData={handleUpdateData}
+            onChange={handleUpdateData}
             onSubmit={handleSubmit}
           />
         );
@@ -64,6 +85,7 @@ export default function SignUpPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
       <div className="mx-auto w-full max-w-lg">
+        <h1 className="text-2xl font-bold mb-6 text-center">회원가입</h1>
         {renderStep()}
         <div className="mt-3 text-center">
           이미 계정이 있나요?
@@ -74,4 +96,6 @@ export default function SignUpPage() {
       </div>
     </div>
   );
-}
+};
+
+export default SignUp;

@@ -1,48 +1,43 @@
 import Button from "@shared/ui/button/button";
 import InputField from "@shared/ui/input-field/input-field";
+import { useState } from "react";
 
 interface PasswordStepProps {
   password: string;
-  checkPassword: string;
-  updateData: (key: string, value: string) => void;
+  onChange: (value: string) => void;
   onNext: () => void;
 }
 
-const PasswordStep = ({
-  password,
-  checkPassword,
-  updateData,
-  onNext,
-}: PasswordStepProps) => {
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    updateData("password", e.target.value);
-  };
+const PasswordStep = ({ password, onChange, onNext }: PasswordStepProps) => {
+  const [checkPassword, setCheckPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password) {
+    if (password !== checkPassword) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+    if (password && checkPassword) {
       onNext();
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <InputField
         label="비밀번호"
         placeHolder="비밀번호를 입력해 주세요"
         value={password}
-        onChange={handlePasswordChange}
+        onChange={(e) => onChange(e.target.value)}
         secret
       />
-
       <InputField
         label="비밀번호 확인"
         placeHolder="비밀번호를 다시 입력해 주세요"
         value={checkPassword}
-        onChange={handlePasswordChange}
+        onChange={(e) => setCheckPassword(e.target.value)}
         secret
       />
-
       <Button
         text="다음"
         type="submit"
