@@ -24,15 +24,21 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      await api.post("/auth/signin", {
+      const response = await api.post("/auth/signin", {
         loginId: id,
         password: password,
       });
 
+      const userId = response.data.data.userId;
+
+      if (userId) {
+        localStorage.setItem("userId", userId);
+      }
+
       alert("로그인에 성공했습니다!");
       navigate("/mypage");
-    } catch (error) {
-      console.error("로그인 실패:", error);
+    } catch {
+      alert("로그인 비밀번호를 확인해주세요");
     }
   };
 
