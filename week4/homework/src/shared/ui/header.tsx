@@ -48,7 +48,7 @@ const Header = () => {
           </ul>
         </nav>
       </header>
-      <main>
+      <main className="flex min-h-screen mx-auto w-full max-w-4xl ">
         <Outlet />
       </main>
     </>

@@ -12,7 +12,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <Navigate to={routePath.LOGIN} replace />,
   },
-
   {
     path: routePath.SIGNUP,
     element: <SignUp />,
@@ -21,8 +20,9 @@ const router = createBrowserRouter([
     path: routePath.LOGIN,
     element: <Login />,
   },
+
   {
-    Component: Header,
+    element: <Header />,
     children: [
       {
         path: routePath.MYPAGE,

@@ -65,7 +65,7 @@ const Mypage = () => {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-112px)] items-center justify-center">
+    <div className="flex flex-col w-full justify-center">
       <div className="mx-auto w-full max-w-lg">
         <p className="mb-6 text-2xl font-bold text-center">내 정보</p>
 

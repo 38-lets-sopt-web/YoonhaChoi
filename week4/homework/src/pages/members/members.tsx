@@ -1,6 +1,7 @@
 import MemberCard from "@shared/ui/member-card";
 import { api } from "@shared/apis/instance";
 import { useEffect, useState } from "react";
+import MemberSearch from "./components/member-search";
 
 interface MemberData {
   id: number;
@@ -25,7 +26,10 @@ const Members = () => {
   }, []);
 
   return (
-    <>
+    <div className="mt-10">
+      <MemberSearch />
+
+      <p className="text-xl font-bold mb-4">전체 멤버 리스트</p>
       <div className="flex flex-wrap gap-4">
         {userList.map((user) => (
           <MemberCard
@@ -36,7 +40,7 @@ const Members = () => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
