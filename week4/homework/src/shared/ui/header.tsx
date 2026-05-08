@@ -2,10 +2,12 @@ import { Outlet, useNavigate } from "react-router";
 
 const Header = () => {
   const navigate = useNavigate();
-  const userName = localStorage.getItem("userId") ?? "";
+
+  const userName = localStorage.getItem("userName");
 
   const handleLogout = () => {
     localStorage.removeItem("userId");
+    localStorage.removeItem("userName");
     navigate("/login");
   };
 

@@ -24,16 +24,17 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await api.post("/auth/signin", {
+      const signinRes = await api.post("/auth/signin", {
         loginId: id,
-        password: password,
+        password,
       });
 
-      const userId = response.data.data.userId;
+      const userId = signinRes.data.data.userId;
+      const userRes = await api.get(`/users/${userId}`);
+      const name = userRes.data.data.name;
 
-      if (userId) {
-        localStorage.setItem("userId", userId);
-      }
+      localStorage.setItem("userId", userId);
+      localStorage.setItem("userName", name);
 
       alert("로그인에 성공했습니다!");
       navigate("/mypage");
