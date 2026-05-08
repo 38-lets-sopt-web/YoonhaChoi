@@ -6,6 +6,7 @@ interface InputFieldProps {
   value?: string | number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   secret?: boolean;
+  errorMessage?: string;
 }
 
 const InputField = ({
@@ -14,6 +15,7 @@ const InputField = ({
   value,
   onChange,
   secret = false,
+  errorMessage,
 }: InputFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -24,7 +26,7 @@ const InputField = ({
   const inputType = secret ? (showPassword ? "text" : "password") : "text";
 
   return (
-    <label className="w-full ">
+    <label className="w-full">
       {label && <p>{label}</p>}
 
       <div className="relative">
@@ -33,9 +35,11 @@ const InputField = ({
           placeholder={placeHolder}
           value={value}
           onChange={onChange}
-          className={`w-full p-3 my-3 border border-gray-400 rounded-lg focus:outline-none focus:border-sky-500 placeholder:text-gray-500 ${
-            secret ? "pr-12" : ""
-          }`}
+          className={`w-full p-3 my-3 border rounded-lg focus:outline-none placeholder:text-gray-500 ${
+            errorMessage
+              ? "border-red-500"
+              : "border-gray-400 focus:border-sky-500"
+          } ${secret ? "pr-12" : ""}`}
         />
 
         {secret && (
@@ -49,6 +53,10 @@ const InputField = ({
           </button>
         )}
       </div>
+
+      {errorMessage && (
+        <p className="mb-3 text-sm text-red-500">{errorMessage}</p>
+      )}
     </label>
   );
 };

@@ -43,8 +43,9 @@ const SignUp = () => {
         part: formData.part,
       });
       navigate("/login");
-    } catch (error) {
-      console.error("회원가입 실패했습니다.", error);
+      alert("회원가입 성공했습니다!");
+    } catch {
+      alert("회원가입 실패했습니다.");
     }
   };
 
