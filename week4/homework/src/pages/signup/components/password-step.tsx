@@ -1,5 +1,5 @@
-import Button from "@shared/ui/button/button";
-import InputField from "@shared/ui/input-field/input-field";
+import Button from "@shared/ui/button";
+import InputField from "@shared/ui/input-field";
 import { useState } from "react";
 
 const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9\s])\S{8,20}$/;

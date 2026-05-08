@@ -1,5 +1,5 @@
-import Button from "@shared/ui/button/button";
-import InputField from "@shared/ui/input-field/input-field";
+import Button from "@shared/ui/button";
+import InputField from "@shared/ui/input-field";
 
 interface IdStepProps {
   loginId: string;

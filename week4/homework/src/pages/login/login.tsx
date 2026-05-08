@@ -1,7 +1,7 @@
 import { useState } from "react";
-import InputField from "@shared/ui/input-field/input-field";
+import InputField from "@shared/ui/input-field";
 import { Link, useNavigate } from "react-router";
-import Button from "@shared/ui/button/button";
+import Button from "@shared/ui/button";
 import Character from "@shared/ui/character/character";
 import { api } from "@shared/apis/instance";
 

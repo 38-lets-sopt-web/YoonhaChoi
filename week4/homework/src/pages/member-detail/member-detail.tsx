@@ -30,7 +30,7 @@ const MemberDetail = () => {
   if (!user) return <p>로딩 중...</p>;
 
   return (
-    <div className="flex flex-col w-full justify-center">
+    <div className="flex flex-col w-full justify-center items-center">
       <h2 className="text-2xl font-bold text-blue-950 mb-5">상세정보</h2>
 
       <Link

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { api } from "@shared/apis/instance";
-import InputField from "@shared/ui/input-field/input-field";
-import Button from "@shared/ui/button/button";
+import InputField from "@shared/ui/input-field";
+import Button from "@shared/ui/button";
 
 interface MemberDetailData {
   loginId: string;
