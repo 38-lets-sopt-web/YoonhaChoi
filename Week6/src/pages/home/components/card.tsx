@@ -10,7 +10,7 @@ function Card({ title, posterUrl, date, description }: CardProps) {
     <div className="cursor-pointer rounded-xl overflow-hidden bg-white min-w-[23rem]">
       <img
         src={posterUrl}
-        alt={title}
+        alt={`${title} 이미지`}
         className="w-full aspect-[2/3] object-cover"
       />
       <div className="p-5">

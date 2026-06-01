@@ -1,9 +1,9 @@
 import Card from "./components/card";
-import { useDiscoverMovies } from "./hooks/useDiscoverMovies";
+import { UseDiscoverMovies } from "./hooks/use-discover-movies";
 import { getTmdbImageUrl } from "../../shared/api/utils/image";
 
 function Home() {
-  const { data: movies } = useDiscoverMovies();
+  const { data: movies } = UseDiscoverMovies();
 
   return (
     <>
