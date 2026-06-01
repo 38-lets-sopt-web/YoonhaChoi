@@ -5,7 +5,7 @@ interface CardProps {
   description: string;
 }
 
-function Card({ title, posterUrl, date, description }: CardProps) {
+const Card = ({ title, posterUrl, date, description }: CardProps) => {
   return (
     <div className="cursor-pointer rounded-xl overflow-hidden bg-white min-w-[23rem]">
       <img

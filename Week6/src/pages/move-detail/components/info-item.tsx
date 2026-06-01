@@ -3,7 +3,7 @@ interface InfoItemProps {
   value: string;
 }
 
-function InfoItem({ label, value }: InfoItemProps) {
+const InfoItem = ({ label, value }: InfoItemProps) => {
   return (
     <div className="flex flex-col gap-1 border border-gray-100 rounded-2xl p-4">
       <p className="caption-disabled">{label}</p>

@@ -2,7 +2,7 @@ import Card from "./components/card";
 import { UseDiscoverMovies } from "./hooks/use-discover-movies";
 import { getTmdbImageUrl } from "../../shared/api/utils/image";
 
-function Home() {
+const Home = () => {
   const { data: movies } = UseDiscoverMovies();
 
   return (

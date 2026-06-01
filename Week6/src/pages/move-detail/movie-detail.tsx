@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import InfoItem from "./components/info-item";
+import MovieInfo from "./components/movie-info";
+import RatingForm from "./components/rating-form";
 
 const MOCK_MOVIE = {
   title: "슈퍼 마리오 갤럭시",
@@ -12,9 +14,16 @@ const MOCK_MOVIE = {
   voteCount: "1,378",
   runtime: "1시간 39분",
   status: "Released",
+  overview: "하이",
+  originalTitle: "하이",
+  originalLanguage: "en",
+  productionCountries: "Japan, United States of America",
+  spokenLanguages: "English",
+  budget: "US$110,000,000",
+  revenue: "US$967,144,200",
 };
 
-function MovieDetail() {
+const MovieDetail = () => {
   const {
     title,
     releaseDate,
@@ -25,10 +34,17 @@ function MovieDetail() {
     voteCount,
     runtime,
     status,
+    overview,
+    originalTitle,
+    originalLanguage,
+    productionCountries,
+    spokenLanguages,
+    budget,
+    revenue,
   } = MOCK_MOVIE;
 
   return (
-    <div>
+    <div className="grid gap-6">
       <Link to="/" className="label flex items-center gap-1 mb-4">
         ← 목록으로 돌아가기
       </Link>
@@ -70,6 +86,24 @@ function MovieDetail() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="bg-white rounded-xl p-6">
+        <h2 className="label mb-3">줄거리</h2>
+        <p className="caption text-gray-700 leading-relaxed">{overview}</p>
+      </div>
+
+      <div className="flex gap-6">
+        <MovieInfo
+          originalTitle={originalTitle}
+          originalLanguage={originalLanguage}
+          productionCountries={productionCountries}
+          spokenLanguages={spokenLanguages}
+          budget={budget}
+          revenue={revenue}
+        />
+
+        <RatingForm />
       </div>
     </div>
   );
