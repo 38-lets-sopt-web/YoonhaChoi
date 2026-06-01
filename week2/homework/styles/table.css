@@ -1,0 +1,89 @@
+.section-table {
+  padding: 1.3rem;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.section-table__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.section-table__sort {
+  flex: none;
+  width: 8rem;
+}
+
+.section-table__button-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.section-table__content {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.section-table__thead,
+.section-table__tfoot {
+  background-color: lavenderblush;
+  font-weight: 700;
+}
+
+.section-table__thead th,
+.section-table__tfoot td {
+  padding: 1rem 2rem;
+  border-top: 1px solid lightpink;
+  border-bottom: 1px solid lightpink;
+}
+
+.section-table__checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.section-table__tbody td {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid gainsboro;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.section-table__tbody tr:hover {
+  background-color: aliceblue;
+  transition: background-color 0.2s ease;
+}
+
+.section-table__tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.total-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8rem;
+}
+
+.text--income {
+  color: blue;
+}
+
+.text--expense {
+  color: red;
+}

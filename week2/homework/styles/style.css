@@ -1,0 +1,14 @@
+@import "./header.css";
+@import "./search-filter.css";
+@import "./table.css";
+@import "./modal.css";
+
+html {
+  background-color: lavenderblush;
+}
+
+main {
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+}
