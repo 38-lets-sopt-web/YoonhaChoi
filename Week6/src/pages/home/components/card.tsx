@@ -8,7 +8,11 @@ interface CardProps {
 function Card({ title, posterUrl, date, description }: CardProps) {
   return (
     <div className="cursor-pointer rounded-xl overflow-hidden bg-white min-w-[23rem]">
-      <img src={posterUrl} alt={title} className="w-full  object-cover" />
+      <img
+        src={posterUrl}
+        alt={title}
+        className="w-full aspect-[2/3] object-cover"
+      />
       <div className="p-5">
         <h3 className="label">{title}</h3>
         <p className="caption-disabled mt-1">{date}</p>
