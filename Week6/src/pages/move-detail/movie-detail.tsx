@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useMovieDetail } from "./hooks/use-movie-detail";
+import { useGuestSession } from "./hooks/use-guest-session";
 import { getTmdbImageUrl } from "../../shared/api/utils/image";
 import InfoItem from "./components/info-item";
 import MovieInfo from "./components/movie-info";
@@ -17,6 +18,7 @@ const formatCurrency = (amount: number) =>
 const MovieDetail = () => {
   const { movieId } = useParams<{ movieId: string }>();
   const { data: movie } = useMovieDetail(Number(movieId));
+  useGuestSession();
 
   if (!movie) return null;
 
