@@ -17,7 +17,8 @@ const formatCurrency = (amount: number) =>
 
 const MovieDetail = () => {
   const { movieId } = useParams<{ movieId: string }>();
-  const { data: movie } = useMovieDetail(Number(movieId));
+  const id = Number(movieId);
+  const { data: movie } = useMovieDetail(id);
   useGuestSession();
 
   if (!movie) return null;
@@ -82,7 +83,7 @@ const MovieDetail = () => {
           revenue={formatCurrency(movie.revenue)}
         />
 
-        <RatingForm />
+        <RatingForm movieId={id} />
       </div>
     </div>
   );

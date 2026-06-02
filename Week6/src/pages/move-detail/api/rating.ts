@@ -11,3 +11,12 @@ export const getGuestSession = async (): Promise<GuestSessionResponse> => {
   const { data } = await instance.get<GuestSessionResponse>(ENDPOINTS.guestSession);
   return data;
 };
+
+export const postRating = async (movieId: number, value: number, guestSessionId: string) => {
+  const { data } = await instance.post(
+    ENDPOINTS.rating(movieId),
+    { value },
+    { params: { guest_session_id: guestSessionId } },
+  );
+  return data;
+};
