@@ -14,9 +14,19 @@ interface DiscoverMoviesResponse {
   total_pages: number;
 }
 
-export const getDiscoverMovies = async ({ pageParam }: { pageParam: number }) => {
+interface DiscoverMoviesParams {
+  pageParam: number;
+  voteGte?: number;
+  voteLte?: number;
+}
+
+export const getDiscoverMovies = async ({ pageParam, voteGte, voteLte }: DiscoverMoviesParams) => {
   const { data } = await instance.get<DiscoverMoviesResponse>(ENDPOINTS.discover, {
-    params: { page: pageParam },
+    params: {
+      page: pageParam,
+      "vote_average.gte": voteGte,
+      "vote_average.lte": voteLte,
+    },
   });
   return data;
 };

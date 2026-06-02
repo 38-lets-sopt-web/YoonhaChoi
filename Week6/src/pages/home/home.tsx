@@ -1,10 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Card from "./components/card";
+import RatingFilter from "./components/rating-filter";
 import { useDiscoverMovies } from "./hooks/use-discover-movies";
 import { getTmdbImageUrl } from "../../shared/api/utils/image";
 
 const Home = () => {
-  const { data, fetchNextPage, hasNextPage } = useDiscoverMovies();
+  const [rating, setRating] = useState<number>();
+  const { data, fetchNextPage, hasNextPage } = useDiscoverMovies({
+    voteGte: rating,
+    voteLte: rating ? rating + 0.9 : undefined,
+  });
+
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,24 +27,26 @@ const Home = () => {
   const movies = data?.pages.flatMap((page) => page.results) ?? [];
 
   return (
-    <>
-      <h1 className="heading mb-6">Movie Explorer</h1>
+    <div className="grid gap-4">
+      <h1 className="heading">Movie Explorer</h1>
+
+      <RatingFilter rating={rating} onChange={setRating} />
 
       <div className="grid grid-cols-4 gap-6">
         {movies.map(({ id, title, poster_path, release_date, overview }) => (
-            <Card
-              key={id}
-              id={id}
-              title={title}
-              posterUrl={getTmdbImageUrl(poster_path)}
-              date={release_date}
-              description={overview}
-            />
-          ))}
+          <Card
+            key={id}
+            id={id}
+            title={title}
+            posterUrl={getTmdbImageUrl(poster_path)}
+            date={release_date}
+            description={overview}
+          />
+        ))}
       </div>
 
       <div ref={ref} />
-    </>
+    </div>
   );
 };
 
