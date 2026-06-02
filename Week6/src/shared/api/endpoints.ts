@@ -3,4 +3,5 @@ export const ENDPOINTS = {
   detail: (movieId: number) => `/movie/${movieId}`,
   guestSession: "/authentication/guest_session/new",
   rating: (movieId: number) => `/movie/${movieId}/rating`,
+  ratedMovies: (guestSessionId: string) => `/guest_session/${guestSessionId}/rated/movies`,
 };

@@ -12,6 +12,20 @@ export const getGuestSession = async (): Promise<GuestSessionResponse> => {
   return data;
 };
 
+interface RatedMovie {
+  id: number;
+  rating: number;
+}
+
+interface RatedMoviesResponse {
+  results: RatedMovie[];
+}
+
+export const getRatedMovies = async (guestSessionId: string): Promise<RatedMovie[]> => {
+  const { data } = await instance.get<RatedMoviesResponse>(ENDPOINTS.ratedMovies(guestSessionId));
+  return data.results;
+};
+
 export const postRating = async (movieId: number, value: number, guestSessionId: string) => {
   const { data } = await instance.post(
     ENDPOINTS.rating(movieId),

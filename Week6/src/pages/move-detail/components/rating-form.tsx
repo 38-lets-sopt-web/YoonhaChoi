@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useGuestSession } from "../hooks/use-guest-session";
+import { useExistingRating } from "../hooks/use-rated-movies";
 import { postRating } from "../api/rating";
 
 interface RatingFormProps {
@@ -8,7 +9,10 @@ interface RatingFormProps {
 
 const RatingForm = ({ movieId }: RatingFormProps) => {
   const { data: guestSessionId } = useGuestSession();
-  const [rating, setRating] = useState("");
+  const { data: existingRating } = useExistingRating(movieId, guestSessionId);
+  const [userRating, setUserRating] = useState<string>();
+
+  const rating = userRating ?? (existingRating != null ? String(existingRating) : "");
 
   const parsed = parseFloat(rating);
   const isOutOfRange = !isNaN(parsed) && (parsed < 0.5 || parsed > 10);
@@ -31,7 +35,7 @@ const RatingForm = ({ movieId }: RatingFormProps) => {
         max={10}
         step={0.5}
         value={rating}
-        onChange={(e) => setRating(e.target.value)}
+        onChange={(e) => setUserRating(e.target.value)}
         className="border border-gray-200 rounded-lg px-3 py-2 caption w-full"
       />
       <div className="flex gap-2">
