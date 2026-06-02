@@ -25,7 +25,7 @@ const MovieDetail = () => {
 
   return (
     <div className="grid gap-6">
-      <Link to="/" className="label flex items-center gap-1 mb-4">
+      <Link to="/" className="label flex items-center gap-1 mt-10">
         ← 목록으로 돌아가기
       </Link>
 
@@ -43,8 +43,10 @@ const MovieDetail = () => {
             className="w-[17rem] object-cover rounded-2xl"
           />
 
-          <div className="flex flex-col gap-4">
-            <p className="caption-disabled">{movie.release_date.replaceAll("-", ".")}</p>
+          <div className="flex flex-col gap-4 flex-1">
+            <p className="caption-disabled">
+              {movie.release_date.replaceAll("-", ".")}
+            </p>
             <h1 className="heading">{movie.title}</h1>
 
             <div className="flex gap-2">
@@ -59,9 +61,18 @@ const MovieDetail = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <InfoItem label="평점" value={`${movie.vote_average.toFixed(1)} / 10`} />
-              <InfoItem label="투표 수" value={movie.vote_count.toLocaleString()} />
-              <InfoItem label="상영 시간" value={formatRuntime(movie.runtime)} />
+              <InfoItem
+                label="평점"
+                value={`${movie.vote_average.toFixed(1)} / 10`}
+              />
+              <InfoItem
+                label="투표 수"
+                value={movie.vote_count.toLocaleString()}
+              />
+              <InfoItem
+                label="상영 시간"
+                value={formatRuntime(movie.runtime)}
+              />
               <InfoItem label="상태" value={movie.status} />
             </div>
           </div>
@@ -70,14 +81,18 @@ const MovieDetail = () => {
 
       <div className="bg-white rounded-xl p-6">
         <h2 className="label mb-3">줄거리</h2>
-        <p className="caption text-gray-700 leading-relaxed">{movie.overview}</p>
+        <p className="caption text-gray-700 leading-relaxed">
+          {movie.overview}
+        </p>
       </div>
 
       <div className="flex gap-6">
         <MovieInfo
           originalTitle={movie.original_title}
           originalLanguage={movie.original_language}
-          productionCountries={movie.production_countries.map((c) => c.name).join(", ")}
+          productionCountries={movie.production_countries
+            .map((c) => c.name)
+            .join(", ")}
           spokenLanguages={movie.spoken_languages.map((l) => l.name).join(", ")}
           budget={formatCurrency(movie.budget)}
           revenue={formatCurrency(movie.revenue)}

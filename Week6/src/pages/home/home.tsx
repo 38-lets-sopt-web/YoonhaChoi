@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import Card from "./components/card";
 import RatingFilter from "./components/rating-filter";
 import { useDiscoverMovies } from "./hooks/use-discover-movies";
@@ -28,7 +29,7 @@ const Home = () => {
 
   return (
     <div className="grid gap-4">
-      <h1 className="heading">Movie Explorer</h1>
+      <Link to="/"><h1 className="heading">Movie Explorer</h1></Link>
 
       <RatingFilter rating={rating} onChange={setRating} />
 

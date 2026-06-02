@@ -10,7 +10,10 @@ interface CardProps {
 
 const Card = ({ id, title, posterUrl, date, description }: CardProps) => {
   return (
-    <Link to={`/movie/${id}`} className="cursor-pointer rounded-xl overflow-hidden bg-white min-w-[23rem]">
+    <Link
+      to={`/movie/${id}`}
+      className="cursor-pointer rounded-xl overflow-hidden bg-white min-w-[23rem] transition-transform duration-200 hover:scale-101"
+    >
       <img
         src={posterUrl}
         alt={`${title} 이미지`}
@@ -23,6 +26,6 @@ const Card = ({ id, title, posterUrl, date, description }: CardProps) => {
       </div>
     </Link>
   );
-}
+};
 
 export default Card;
