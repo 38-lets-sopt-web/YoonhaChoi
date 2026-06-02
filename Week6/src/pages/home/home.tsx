@@ -13,6 +13,7 @@ const Home = () => {
         {movies?.map(({ id, title, poster_path, release_date, overview }) => (
           <Card
             key={id}
+            id={id}
             title={title}
             posterUrl={getTmdbImageUrl(poster_path)}
             date={release_date}
@@ -22,6 +23,6 @@ const Home = () => {
       </div>
     </>
   );
-}
+};
 
 export default Home;

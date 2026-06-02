@@ -1,47 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useMovieDetail } from "./hooks/use-movie-detail";
+import { getTmdbImageUrl } from "../../shared/api/utils/image";
 import InfoItem from "./components/info-item";
 import MovieInfo from "./components/movie-info";
 import RatingForm from "./components/rating-form";
 
-const MOCK_MOVIE = {
-  title: "슈퍼 마리오 갤럭시",
-  releaseDate: "2026.04.01",
-  backdropUrl:
-    "https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
-  posterUrl: "https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
-  genres: ["가족", "코미디", "모험", "판타지", "애니메이션"],
-  rating: "7.6 / 10",
-  voteCount: "1,378",
-  runtime: "1시간 39분",
-  status: "Released",
-  overview: "하이",
-  originalTitle: "하이",
-  originalLanguage: "en",
-  productionCountries: "Japan, United States of America",
-  spokenLanguages: "English",
-  budget: "US$110,000,000",
-  revenue: "US$967,144,200",
+const formatRuntime = (minutes: number) => {
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return h > 0 ? `${h}시간 ${m}분` : `${m}분`;
 };
 
+const formatCurrency = (amount: number) =>
+  amount > 0 ? `$${amount.toLocaleString()}` : "-";
+
 const MovieDetail = () => {
-  const {
-    title,
-    releaseDate,
-    backdropUrl,
-    posterUrl,
-    genres,
-    rating,
-    voteCount,
-    runtime,
-    status,
-    overview,
-    originalTitle,
-    originalLanguage,
-    productionCountries,
-    spokenLanguages,
-    budget,
-    revenue,
-  } = MOCK_MOVIE;
+  const { movieId } = useParams<{ movieId: string }>();
+  const { data: movie } = useMovieDetail(Number(movieId));
+
+  if (!movie) return null;
 
   return (
     <div className="grid gap-6">
@@ -51,38 +28,38 @@ const MovieDetail = () => {
 
       <div className="bg-white rounded-xl overflow-hidden">
         <img
-          src={backdropUrl}
+          src={getTmdbImageUrl(movie.backdrop_path, "w780")}
           alt=""
           className="w-full h-[35rem] object-cover"
         />
 
         <div className="flex gap-6 p-6">
           <img
-            src={posterUrl}
-            alt={`${title} 이미지`}
+            src={getTmdbImageUrl(movie.poster_path)}
+            alt={`${movie.title} 이미지`}
             className="w-[17rem] object-cover rounded-2xl"
           />
 
           <div className="flex flex-col gap-4">
-            <p className="caption-disabled">{releaseDate}</p>
-            <h1 className="heading">{title}</h1>
+            <p className="caption-disabled">{movie.release_date.replaceAll("-", ".")}</p>
+            <h1 className="heading">{movie.title}</h1>
 
             <div className="flex gap-2">
-              {genres.map((genre) => (
+              {movie.genres.map((genre) => (
                 <span
-                  key={genre}
+                  key={genre.id}
                   className="px-4 py-1 bg-gray-100 rounded-full caption"
                 >
-                  {genre}
+                  {genre.name}
                 </span>
               ))}
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <InfoItem label="평점" value={rating} />
-              <InfoItem label="투표 수" value={voteCount} />
-              <InfoItem label="상영 시간" value={runtime} />
-              <InfoItem label="상태" value={status} />
+              <InfoItem label="평점" value={`${movie.vote_average.toFixed(1)} / 10`} />
+              <InfoItem label="투표 수" value={movie.vote_count.toLocaleString()} />
+              <InfoItem label="상영 시간" value={formatRuntime(movie.runtime)} />
+              <InfoItem label="상태" value={movie.status} />
             </div>
           </div>
         </div>
@@ -90,23 +67,23 @@ const MovieDetail = () => {
 
       <div className="bg-white rounded-xl p-6">
         <h2 className="label mb-3">줄거리</h2>
-        <p className="caption text-gray-700 leading-relaxed">{overview}</p>
+        <p className="caption text-gray-700 leading-relaxed">{movie.overview}</p>
       </div>
 
       <div className="flex gap-6">
         <MovieInfo
-          originalTitle={originalTitle}
-          originalLanguage={originalLanguage}
-          productionCountries={productionCountries}
-          spokenLanguages={spokenLanguages}
-          budget={budget}
-          revenue={revenue}
+          originalTitle={movie.original_title}
+          originalLanguage={movie.original_language}
+          productionCountries={movie.production_countries.map((c) => c.name).join(", ")}
+          spokenLanguages={movie.spoken_languages.map((l) => l.name).join(", ")}
+          budget={formatCurrency(movie.budget)}
+          revenue={formatCurrency(movie.revenue)}
         />
 
         <RatingForm />
       </div>
     </div>
   );
-}
+};
 
 export default MovieDetail;
