@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "./theme.css";
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #f4f4f5;
+  padding-inline: 20rem;
+}
