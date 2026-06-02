@@ -34,3 +34,11 @@ export const postRating = async (movieId: number, value: number, guestSessionId:
   );
   return data;
 };
+
+export const deleteRating = async (movieId: number, guestSessionId: string) => {
+  const { data } = await instance.delete(
+    ENDPOINTS.rating(movieId),
+    { params: { guest_session_id: guestSessionId } },
+  );
+  return data;
+};

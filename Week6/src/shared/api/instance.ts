@@ -7,3 +7,11 @@ export const instance = axios.create({
     language: "ko-KR",
   },
 });
+
+instance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const message = error.response?.data?.status_message ?? "오류가 발생했습니다.";
+    return Promise.reject(new Error(message));
+  },
+);
