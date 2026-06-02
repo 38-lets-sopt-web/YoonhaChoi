@@ -9,7 +9,14 @@ interface Movie {
   overview: string;
 }
 
-export const getDiscoverMovies = async () => {
-  const { data } = await instance.get<{ results: Movie[] }>(ENDPOINTS.discover);
-  return data.results;
+interface DiscoverMoviesResponse {
+  results: Movie[];
+  total_pages: number;
+}
+
+export const getDiscoverMovies = async ({ pageParam }: { pageParam: number }) => {
+  const { data } = await instance.get<DiscoverMoviesResponse>(ENDPOINTS.discover, {
+    params: { page: pageParam },
+  });
+  return data;
 };
